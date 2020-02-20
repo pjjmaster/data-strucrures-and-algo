@@ -4,16 +4,20 @@ public class BoundaryTraversal {
 
 	public void boundaryTraversal(TreeNode root) {
 
-		/*
-		 * 1. Traverse left side tree 2. Traverse leaf nodes 3. Traverse right side of
-		 * tree
-		 */
+		
+		if (root == null) {
+			return;
+		}
 
-		traverseLeftSide(root);
+		System.out.println(root.val);
 
-		printLeaves(root);
+		traverseLeftSide(root.left);
 
-		traverseRightSide(root);
+		printLeaves(root.left);
+
+		printLeaves(root.right);
+
+		traverseRightSide(root.right);
 
 	}
 
@@ -23,9 +27,12 @@ public class BoundaryTraversal {
 			return;
 		}
 
-		while (root.left != null && !isLeafNode(root)) {
+		if (root.left != null) {
 			System.out.println(root.val);
-			root = root.left;
+			traverseLeftSide(root.left);
+		} else if (root.right != null) {
+			System.out.println(root.val);
+			traverseLeftSide(root.right);
 		}
 	}
 
@@ -38,22 +45,26 @@ public class BoundaryTraversal {
 		if (root == null) {
 			return;
 		}
+		printLeaves(root.left);
 
 		if (isLeafNode(root)) {
 			System.out.println(root.val);
 		}
 
-		printLeaves(root.left);
 		printLeaves(root.right);
 	}
 
 	private void traverseRightSide(TreeNode root) {
+
 		if (root == null) {
 			return;
 		}
 
-		traverseRightSide(root.right);
-		if ( !isLeafNode(root)) {
+		if (root.right != null) {
+			traverseRightSide(root.right);
+			System.out.println(root.val);
+		} else if (root.left != null) {
+			traverseRightSide(root.left);
 			System.out.println(root.val);
 		}
 	}
@@ -69,9 +80,9 @@ public class BoundaryTraversal {
 		root.left.right = new TreeNode(5);
 		root.right.left = new TreeNode(6);
 		root.right.right = new TreeNode(7);
-		root.left.left.left = new TreeNode(8);
-		root.left.right.right = new TreeNode(9);
-		root.right.right.left = new TreeNode(10);
+		root.left.left.right = new TreeNode(8);
+		root.left.left.right.right = new TreeNode(9);
+		root.left.left.right.right.right = new TreeNode(10);
 
 		traverse.boundaryTraversal(root);
 

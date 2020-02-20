@@ -35,7 +35,7 @@ public class PairWithSum {
 
 			int sum = array[left] + array[right];
 			if (sum == exptectedSum) {
-				System.out.printf("(%d, %d) %n", array[left], array[right]);
+				//System.out.printf("(%d, %d) %n", array[left], array[right]);
 				result[0] = left;
 				result[1] = right;
 				left++;
@@ -46,12 +46,12 @@ public class PairWithSum {
 				right--;
 			}
 		}
-		
+		System.out.println("start:" + result[0] + " end:" + result[1]);
 		return result;
 
 	}
 
-	public int[] twoSum(int[] nums, int target) {
+	public static int[] twoSum(int[] nums, int target) {
 
 		int arraySize = nums.length;
 
@@ -73,6 +73,8 @@ public class PairWithSum {
 				}
 			}
 		}
+		System.out.println("start:" + result[0] + " end:" + result[1]);
+
 		return result;
 
 	}
@@ -83,7 +85,8 @@ public class PairWithSum {
 		int[] array2 = {12, 14, 17, 15, 19, 20, -11};
 		//printPairs(array, 11);
 		
-		System.out.println("PairWithSum.main():" + printPairsUsingTwoPointers(array2, 9));
+		//System.out.println("PairWithSum.main():" + printPairsUsingTwoPointers(array2, 9));
+		System.out.println("PairWithSum.main():" + twoSum(array2, 9));
 	}
 
 }
