@@ -36,7 +36,7 @@ public class BinaryMaxHeap {
 			heap[i] = heap[parent(i)];
 			i = parent(i);
 		}
-		
+		heap[i] = temp;
 	}
 
 	public static void main(String[] args) {
