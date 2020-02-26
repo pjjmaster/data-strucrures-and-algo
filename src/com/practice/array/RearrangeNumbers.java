@@ -26,17 +26,6 @@ public class RearrangeNumbers {
 
 		System.out.println("RearrangeNumbers.main()" + array);
 
-		/*
-		 * if (i >= j) { return; }
-		 * 
-		 * do { i++; } while (array[i] > 0);
-		 * 
-		 * do { j--; } while (array[j] < 0);
-		 * 
-		 * int temp = array[j]; array[j] = array[i]; array[i] = temp;
-		 * 
-		 * reArrange(array, i, j);
-		 */
 	}
 
 	public static void main(String[] args) {
