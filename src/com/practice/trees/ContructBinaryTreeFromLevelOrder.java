@@ -15,9 +15,7 @@ public class ContructBinaryTreeFromLevelOrder {
 			if (rightNode < array.length) {
 				root.right = new TreeNode(array[rightNode]);
 			}
-
 		}
-
 		return root;
 	}
 
@@ -36,9 +34,9 @@ public class ContructBinaryTreeFromLevelOrder {
 
 		return root;
 	}
-	
+
 	public static void main(String[] args) {
-		
+
 	}
 
 }
