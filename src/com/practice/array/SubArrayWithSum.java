@@ -1,11 +1,13 @@
 package com.practice.array;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class SubArrayWithSum {
 
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
+/*		Scanner scanner = new Scanner(System.in);
 
 		int numberOfTestcases = scanner.nextInt();
 
@@ -16,6 +18,10 @@ public class SubArrayWithSum {
 			// printSubArrayWithSum(array, expectedSum);
 			printSubArrayEfficient(array, expectedSum);
 		}
+		*/
+		
+		
+		
 
 	}
 
@@ -70,6 +76,17 @@ public class SubArrayWithSum {
 				System.out.println(-1);
 			}
 		}
+		
+		List<Integer> list = new ArrayList<>();
+		list.add(6);
+		list.add(2);
+		list.add(4);
+		list.add(1);
+		list.add(5);
+		list.add(6);
+
+		printSubArrayEfficient(array, expectedSum);
+	
 
 	}
 

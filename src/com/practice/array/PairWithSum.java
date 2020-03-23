@@ -21,7 +21,7 @@ public class PairWithSum {
 
 	public static int[] printPairsUsingTwoPointers(int[] array, int exptectedSum) {
 
-		int [] result = new int[2];
+		int[] result = new int[2];
 
 		if (array.length < 2) {
 			return result;
@@ -35,7 +35,7 @@ public class PairWithSum {
 
 			int sum = array[left] + array[right];
 			if (sum == exptectedSum) {
-				//System.out.printf("(%d, %d) %n", array[left], array[right]);
+				// System.out.printf("(%d, %d) %n", array[left], array[right]);
 				result[0] = left;
 				result[1] = right;
 				left++;
@@ -63,13 +63,13 @@ public class PairWithSum {
 		int right = arraySize - 1;
 		int[] result = new int[2];
 		while (left < arraySize) {
-			if((nums[left] +nums[right]) == target) {
+			if ((nums[left] + nums[right]) == target) {
 				result[0] = left;
 				result[1] = right;
 				return result;
 			} else {
-				while(right==left) {
-					right --;
+				while (right == left) {
+					right--;
 				}
 			}
 		}
@@ -78,15 +78,44 @@ public class PairWithSum {
 		return result;
 
 	}
-	
-	
+
+	public static int[] pairsWithGivenSum(int[] array, int sum) {
+
+		if (array.length < 2) {
+			return null;
+		}
+
+		int left = 0;
+		int right = array.length - 1;
+
+		int[] output = new int[2];
+
+		while (left < right) {
+
+			if (array[left] + array[right] == sum) {
+				output[0] = left;
+				output[1] = right;
+				return output;
+			} else {
+				while (left <= right) {
+					right--;
+				}
+			}
+
+		}
+		System.out.println("start:" + output[0] + " end:" + output[1]);
+
+		return null;
+	}
+
 	public static void main(String[] args) {
 		int[] array = { 0, 14, 0, 4, 7, 8, 3, 5, 7 };
-		int[] array2 = {12, 14, 17, 15, 19, 20, -11};
-		//printPairs(array, 11);
-		
-		//System.out.println("PairWithSum.main():" + printPairsUsingTwoPointers(array2, 9));
-		System.out.println("PairWithSum.main():" + twoSum(array2, 9));
+		int[] array2 = { 12, 14, 17, 15, 19, 20, -11 };
+		// printPairs(array, 11);
+
+		// System.out.println("PairWithSum.main():" + printPairsUsingTwoPointers(array2,
+		// 9));
+		System.out.println("PairWithSum.main():" + pairsWithGivenSum(array2, 9));
 	}
 
 }

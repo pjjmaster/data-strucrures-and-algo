@@ -21,7 +21,7 @@ public class TEst {
 	}
 
 	public static void main(String[] args) {
-		B b = new B();
+	/*	B b = new B();
 		
 		if(b instanceof B) {
 			System.out.println("TEst.main()");
@@ -33,7 +33,7 @@ public class TEst {
 
 		//b = c;
 		newPrint(b);
-	}
+*/	}
 
 	public static void newPrint(A a) {
 		a.printName();
