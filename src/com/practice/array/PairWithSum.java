@@ -7,7 +7,7 @@ import java.util.Set;
 public class PairWithSum {
 
 	public static void printPairs(int[] array, int sum) {
-		Set set = new HashSet(array.length);
+		Set<Integer> set = new HashSet<>(array.length);
 		for (int number : array) {
 			int target = sum - number;
 
@@ -35,7 +35,7 @@ public class PairWithSum {
 
 			int sum = array[left] + array[right];
 			if (sum == exptectedSum) {
-				// System.out.printf("(%d, %d) %n", array[left], array[right]);
+				System.out.printf("(%d, %d) %n", array[left], array[right]);
 				result[0] = left;
 				result[1] = right;
 				left++;
@@ -46,76 +46,44 @@ public class PairWithSum {
 				right--;
 			}
 		}
-		System.out.println("start:" + result[0] + " end:" + result[1]);
 		return result;
 
 	}
 
-	public static int[] twoSum(int[] nums, int target) {
+	public static void printSumPairs(int[] array, int sum) {
 
-		int arraySize = nums.length;
-
-		if (arraySize < 2) {
-			return null;
+		if (array.length <= 2) {
+			return;
 		}
 
-		int left = 0;
-		int right = arraySize - 1;
-		int[] result = new int[2];
-		while (left < arraySize) {
-			if ((nums[left] + nums[right]) == target) {
-				result[0] = left;
-				result[1] = right;
-				return result;
-			} else {
-				while (right == left) {
-					right--;
-				}
-			}
-		}
-		System.out.println("start:" + result[0] + " end:" + result[1]);
-
-		return result;
-
-	}
-
-	public static int[] pairsWithGivenSum(int[] array, int sum) {
-
-		if (array.length < 2) {
-			return null;
-		}
+		Arrays.sort(array);
 
 		int left = 0;
 		int right = array.length - 1;
 
-		int[] output = new int[2];
-
 		while (left < right) {
-
-			if (array[left] + array[right] == sum) {
-				output[0] = left;
-				output[1] = right;
-				return output;
+			int localSum = array[left] + array[right];
+			if (localSum == sum) {
+				System.out.println("(" + left + "," + right + ")");
+				left++;
+				right--;
+			} else if (localSum < sum) {
+				left++;
 			} else {
-				while (left <= right) {
-					right--;
-				}
+				right--;
 			}
-
 		}
-		System.out.println("start:" + output[0] + " end:" + output[1]);
 
-		return null;
 	}
 
 	public static void main(String[] args) {
-		int[] array = { 0, 14, 0, 4, 7, 8, 3, 5, 7 };
+		int[] array = { 0, 2, 14, 4, 7, 8, 3, 5, 1, 6 };
 		int[] array2 = { 12, 14, 17, 15, 19, 20, -11 };
-		// printPairs(array, 11);
 
-		// System.out.println("PairWithSum.main():" + printPairsUsingTwoPointers(array2,
-		// 9));
-		System.out.println("PairWithSum.main():" + pairsWithGivenSum(array2, 9));
+		//System.out.println("PairWithSum.main():" + printPairsUsingTwoPointers(array, 9));
+		//printPairs(array, 9);
+		printSumPairs(array, 9);
+
 	}
 
 }

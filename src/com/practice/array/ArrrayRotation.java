@@ -1,5 +1,7 @@
 package com.practice.array;
 
+import java.util.Scanner;
+
 public class ArrrayRotation {
 
 	public static void rotate(int array[], int rotate, int size) {
@@ -39,22 +41,15 @@ public class ArrrayRotation {
 		}
 		array[i] = temp;
 	}
-	
-	private static void testRotate(int[] array, int numberOfPositions) {
 
-		int temp = array[0];
-		for(int i=0;i<array.length;i++) {
-			array[i] = array[i+1];
-		}
-		
-	}
 
 	public static void main(String[] args) {
 		int array[] = { 1, 2, 3, 4, 5, 6 };
 
-		// rotate(array, 2, array.length);
-
 		leftRotate(array, 2, array.length);
+		
+		Scanner scanner = new Scanner(System.in);
+		scanner.next();
 
 	}
 

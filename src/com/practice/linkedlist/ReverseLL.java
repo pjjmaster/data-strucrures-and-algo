@@ -15,6 +15,7 @@ public class ReverseLL {
 
 		Node currentNode = head;
 		Node previousNode = null;
+		
 		Node nextNode = null;
 
 		while (currentNode != null) {
