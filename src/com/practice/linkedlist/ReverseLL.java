@@ -51,6 +51,88 @@ public class ReverseLL {
 		return previousNode;
 	}
 
+	
+    // Reverse k nodes alternatively i.e. if k = 3 , reverse 3 nodes, then keep next 3 as it is, then reverse next 3 and so on			
+    public ListNode reverseKGroup(ListNode head, int k) {
+        
+        ListNode current = head;
+        ListNode previous= null;
+        ListNode next = null;
+        int count =0;
+        
+        while(current != null && count < k) {
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;            
+            count++;
+        }
+                
+        count= 0;
+        if(head!=null) {
+            head.next = current;
+        }
+        while(current != null && count < k) {
+            current = current.next;
+            count++;
+        }
+        
+        
+        if(current != null) {
+            current.next = reverseKGroup(current.next, k);
+        }
+        
+        return previous;
+    }
+	
+   // Reverse linked list nodes in the group of k only if remaining nodes>k
+   // If nodes are less than K, just keep them as it is	
+   public ListNode reverseKGroup(ListNode head, int k) {
+        if(k==1) {
+            return head;
+        }
+         
+        return reverse(head, k);
+        
+
+    }
+    
+    public ListNode reverse(ListNode head, int k) {
+                
+        ListNode temp = head;
+        int count =0;
+        while(temp!=null && count<k) {
+            count++;
+            temp = temp.next;
+        }
+        
+        if(count!=k) {
+            return head;
+        }
+        
+        
+        ListNode current = head;
+        ListNode previous= null;
+        ListNode next = null;
+        count = 0;
+        while(current != null && count < k) {
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;            
+            count++;
+        }
+                       
+        if(current != null) {
+            head.next = reverseKGroup(current, k);
+        }
+        
+        return previous;
+ 
+    }
+
+
+	
 	public static void printList(Node head) {
 		while (head != null) {
 			System.out.println(head.data);
