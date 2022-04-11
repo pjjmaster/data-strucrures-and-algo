@@ -98,14 +98,15 @@ public class ReverseLL {
     }
     
     public ListNode reverse(ListNode head, int k) {
-                
+        
+	// Using temo node check if there are k nodes in the list   
         ListNode temp = head;
         int count =0;
         while(temp!=null && count<k) {
             count++;
             temp = temp.next;
         }
-        
+        // If remaining number of nodes are not equal k the we don't want to reverse
         if(count!=k) {
             return head;
         }
