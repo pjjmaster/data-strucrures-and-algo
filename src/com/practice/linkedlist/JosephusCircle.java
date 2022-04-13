@@ -45,5 +45,32 @@ public class JosephusCircle {
     return head.value;
   }
 
+ // Recursive Solution
+   public int findTheWinnerRecursive(int n, int k) {
+
+      List<Integer> friends = new ArrayList<>();
+      for(int i =1;i<=n;i++) {
+          friends.add(i);
+      }
+    
+      //(k-1)th index element will be deleted
+      int winner = getWinnerRec(k-1, 0, friends);
+      
+      return winner;
+  
+  }
+    
+  private int getWinnerRec(int k, int index, List<Integer> friends) {
+      
+      if(friends.size() ==1) {
+          return friends.get(0);
+      }
+      // Calculate index which will be deleted
+      index = ((index + k) % friends.size());
+      friends.remove(index);
+      
+      return getWinnerRec(k, index, friends);
+  }  
+ 
 
 }
