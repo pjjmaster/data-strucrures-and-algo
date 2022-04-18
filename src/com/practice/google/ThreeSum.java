@@ -41,5 +41,48 @@ public class ThreeSum {
         
     }
 
+    /* Approachto get two sums using two pointers
+    */
+    public List<List<Integer>> threeSumTwoPointer(int[] nums) {
+        
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(nums);
+        
+        for(int i = 0; i < nums.length && nums[i] <= 0; i++) {
+            
+            if(i == 0 || nums[i - 1] != nums[i]) {
+                twoSums(nums, i, result);
+            }
+        }
+        return result;
+    }
+    
+    private void twoSumsTwoPointers(int[] nums, int i, List<List<Integer>> result) {
+        
+        int start = i + 1;
+        int end = nums.length -1;
+        
+        while(start < end) {
+         
+            int sum = nums[i] + nums[start] + nums[end];
+            
+            if(sum < 0) {
+                start ++;
+            } else if(sum > 0) {
+                end--;
+            } else {
+                List<Integer> triplet = Arrays.asList(nums[i], nums[start], nums[end]);
+                result.add(triplet);
+                start++;
+                end--;
+                while(start < end && nums[start] == nums[start - 1]) {
+                    start++;
+                }
+            }
+        }
+        
+    }
+    
+    
 
 }
