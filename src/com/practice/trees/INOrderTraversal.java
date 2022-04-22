@@ -13,6 +13,24 @@ public class INOrderTraversal {
 		inorderTraversal(root.right);
 	}
 	
+        private void inorder(TreeNode root, List<Integer> result) {
+            Stack<TreeNode> stack = new Stack<>();
+
+            while(true) {              
+                while(root != null){
+                    stack.push(root);
+                    root = root.left;
+                }
+                
+                if(stack.isEmpty()) {
+                    break;
+                }
+                root = stack.pop();
+                result.add(root.val);
+                root = root.right;
+            }        
+        }
+	
 	
 	public static void main(String[] args) {
 		
