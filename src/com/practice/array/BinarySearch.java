@@ -5,7 +5,7 @@ public class BinarySearch {
 	private static void binarySearch(int[] sortedArray, int l, int r, int x) {
 
 		if (r >= l) {
-			int mid = (l + r) / 2;
+			int mid = l + (r - l)/2;
 
 			if (x == sortedArray[mid]) {
 				System.out.println("BinarySearch.binarySearch(): Index:" + mid);
