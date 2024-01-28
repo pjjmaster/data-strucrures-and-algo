@@ -43,3 +43,36 @@ product_lambda = reduce(lambda x,y : x*y, lst)
 print(product_lambda)
 
 
+
+enabled_domains = {
+    'core': {
+        'version' : '1.0.0',
+        'domains': [ 
+            'RefNLU_Control_CommandControl',
+            'RefNLU_Media_Radio',
+            'RefNLU_General_Generic',
+            'RefNLU_General_Help',]
+    },
+    'knowledge': {
+        'version' : '2.0.0',
+        'domains': [ 
+            'KnowledgeNLU_knowledge'
+            ]
+    }
+}
+
+classifier_domains = []
+
+for domain_type, value in enabled_domains.items():
+    domains_list = enabled_domains.get(domain_type)
+    if domains_list:
+        classifier_domains.extend(domains_list.get('domains'))
+
+
+
+list_of_domains = [enabled_domains.get(domain_type).get('domains') for domain_type, value in enabled_domains.items() if enabled_domains.get(domain_type)]
+
+
+
+print(list_of_domains)
+
