@@ -55,10 +55,10 @@ public class SeversInSameCluster {
       graph.computeIfAbsent(u, e -> new ArrayList<>()).add(v);
       graph.computeIfAbsent(v, e -> new ArrayList<>()).add(u);
     }
-    return findConnection(graph, server1, server2);
+    return bfs(graph, server1, server2);
   }
 
-  private boolean findConnection(Map<Integer, List<Integer>> graph, int source, int target) {
+  private boolean bfs(Map<Integer, List<Integer>> graph, int source, int target) {
     Set<Integer> visited = new HashSet<>();
     Queue<Integer> queue = new LinkedList<>();
     queue.offer(source);
