@@ -44,6 +44,44 @@ public class SeversInSameCluster {
     }
   }
 
+  public boolean areServersConnected(int totalNumberOfServers, int[][] connections, int server1,
+      int server2) {
+
+    Map<Integer, List<Integer>> graph = new HashMap<>();
+
+    for (int[] connection : connections) {
+      int u = connection[0];
+      int v = connection[1];
+      graph.computeIfAbsent(u, e -> new ArrayList<>()).add(v);
+      graph.computeIfAbsent(v, e -> new ArrayList<>()).add(u);
+    }
+    return findConnection(graph, server1, server2);
+  }
+
+  private boolean findConnection(Map<Integer, List<Integer>> graph, int source, int target) {
+    Set<Integer> visited = new HashSet<>();
+    Queue<Integer> queue = new LinkedList<>();
+    queue.offer(source);
+    visited.add(source);
+
+    while (!queue.isEmpty()) {
+      int server = queue.poll();
+      visited.add(server);
+      if (server == target) {
+        return true;
+      }
+      if (graph.containsKey(server)) {
+        for (int neighbour : graph.get(server)) {
+          if (!visited.contains(neighbour)) {
+            visited.add(neighbour);
+            queue.offer(neighbour);
+          }
+        }
+      }
+    }
+    return false;
+  }
+
   public static void main(String[] args) {
     SeversInSameCluster seversInSameCluster = new SeversInSameCluster();
     int[][] connections = {{0, 1}, {1, 2}, {2, 3}, {3, 4}};
@@ -53,5 +91,12 @@ public class SeversInSameCluster {
     int[][] connections2 = {{0, 1}, {2, 3}};
     System.out
         .println(seversInSameCluster.ifServersAreInSameCluster(4, connections2)); // Output: false
+
+    int[][] connections3 = {{0, 1}, {1, 2}, {3, 4}};
+    System.out
+        .println(seversInSameCluster.areServersConnected(5, connections3, 0, 2)); // Output: true
+    System.out
+        .println(seversInSameCluster.areServersConnected(5, connections3, 0, 4)); // Output: false
   }
+  
 }
