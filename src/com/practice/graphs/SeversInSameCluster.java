@@ -5,6 +5,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+Problem:
+Input:
+n: Number of servers.
+connections: List of pairs representing direct connections between servers.
+Output:
+Return true if all servers belong to the same network, otherwise false.
+
+**/
+
+
 public class SeversInSameCluster {
 
   public boolean ifServersAreInSameCluster(int numberOfServers, int[][] connections) {
