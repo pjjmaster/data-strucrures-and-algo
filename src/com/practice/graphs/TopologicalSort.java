@@ -5,6 +5,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
+/**
+There are a total of N tasks, labeled from 0 to N-1. 
+Some tasks may have prerequisites, for example to do task 0 you have to first complete task 1, which is expressed as a pair: [0, 1]. 
+Given the total number of tasks N and a list of prerequisite pairs P, find if it is possible to finish all tasks.
+Examples:
+Input: N = 4, P = 3, prerequisites = {{1,0},{2,1},{3,2}}
+Output: Yes
+Input: N = 2, P = 2, prerequisites = {{1,0},{0,1}}
+Output: No
+**/
+
 public class TopologicalSort {
 
   public boolean canFinish(int numberOfCourses, int[][] prerequisites) {
