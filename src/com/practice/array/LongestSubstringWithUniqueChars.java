@@ -5,6 +5,30 @@ import java.util.Set;
 
 public class LongestSubstringWithUniqueChars {
 
+	  public static int[] largestUniqueSubArray(String input) {
+	    if (input.length() < 0) {
+	      return new int[]{-1, 0};
+	    }
+	    int currentMax = 1;
+	    int max = 1;
+	    int startIndex = 0;
+	    int currentStartIndex = 0;
+	    for (int i = 1; i < input.length(); i++) {
+	      if (input.charAt(i) == input.charAt(i - 1)) {
+	        currentMax++;
+	      } else {
+	        currentStartIndex = i;
+	        currentMax = 1;
+	      }
+	      if (currentMax > max) {
+	        max = currentMax;
+	        startIndex = currentStartIndex;
+	      }
+	    }
+	    return new int[]{startIndex, max};
+	  }
+	
+	
 	static final int NO_OF_CHARS = 256;
 	
 	public static int lengthOfLongestSubstringUsingHashSet(String string) {
