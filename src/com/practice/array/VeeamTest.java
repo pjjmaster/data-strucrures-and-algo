@@ -64,4 +64,56 @@ class VeeamTest {
 
         return null; // No valid next part found from this state
     }
+
+
+    /**
+        We have:
+	•	A 2D grid int[][] grid
+	•	Each cell represents a square on the ground
+	•	The value in the cell = number of leaves
+
+We have:
+	•	A 2D grid int[][] grid
+	•	Each cell represents a square on the ground
+	•	The value in the cell = number of leaves
+    **/
+
+public class LeafSimulation {
+
+    public static int[][] moveLeaves(int[][] grid, char direction) {
+
+        int rows = grid.length;
+        int cols = grid[0].length;
+
+        int[][] newGrid = new int[rows][cols];
+
+        int dr = 0, dc = 0;
+
+        switch(direction) {
+            case 'N': dr = -1; break;
+            case 'S': dr = 1; break;
+            case 'E': dc = 1; break;
+            case 'W': dc = -1; break;
+        }
+
+        for(int r = 0; r < rows; r++) {
+            for(int c = 0; c < cols; c++) {
+
+                int leaves = grid[r][c];
+                int newR = r + dr;
+                int newC = c + dc;
+
+                if(newR >= 0 && newR < rows && newC >= 0 && newC < cols) {
+                    newGrid[newR][newC] += leaves;
+                }
+                // else leaves are blown away
+            }
+        }
+
+        return newGrid;
+    }
+}
+
+
+
 }
